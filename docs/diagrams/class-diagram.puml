@@ -1,0 +1,63 @@
+@startuml
+
+class Cliente {
+  +int id
+  +string nome
+  +string cpf_cnpj
+  +string email
+  +string telefone
+  +string logo
+  +Endereco endereco
+}
+
+class Endereco {
+  +string rua
+  +string bairro
+  +string cep
+  +string municipio
+  +string uf
+}
+
+class Produto {
+  +int id
+  +string codigo_produto
+  +string descricao
+  +string ncm_sh
+  +string un
+  +float valor_unitario
+}
+
+class ItemComercial {
+  +int id
+  +Produto produto
+  +int quantidade
+  +float valor_unitario
+  +float total
+}
+
+class Pedido {
+  +int id
+  +date data_pedido
+  +date prazo_entrega
+  +float valor_total
+  +Cliente cliente
+  +List<ItemComercial> itens
+}
+
+class Orcamento {
+  +int id
+  +date data_orcamento
+  +date validade_orcamento
+  +float valor_total
+  +Cliente cliente
+  +List<ItemComercial> itens
+}
+
+Cliente --> Endereco
+Pedido --> Cliente
+Pedido --> "*" ItemComercial
+Orcamento --> Cliente
+Orcamento --> "*" ItemComercial
+ItemComercial --> Produto
+
+@enduml
