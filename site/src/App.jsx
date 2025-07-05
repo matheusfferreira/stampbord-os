@@ -1,7 +1,7 @@
-import './App.css'
-import './i18n'
-import './routes/Router'
-import AppRouter from './routes/Router'
+import './App.css';
+import './i18n';
+import './routes/Router';
+import AppRouter from './routes/Router';
 
 function App() {
   return (

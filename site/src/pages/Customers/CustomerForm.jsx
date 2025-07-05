@@ -1,11 +1,11 @@
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next';
-import styles from './CustomerForm.module.css';
+import styles from './Customer.module.css';
 
 import api from '../../services/api'
 
 export default function CustomerForm() {
-    const { t } = useTranslation();
+    const { t } = useTranslation()
 
     const inputName = useRef()
     const inputTaxCode = useRef()
