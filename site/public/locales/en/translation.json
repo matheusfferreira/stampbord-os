@@ -1,0 +1,10 @@
+{
+  "customerForm": {
+    "email": "Email",
+    "name": "Name",
+    "phone": "Phone Number",
+    "saveButton": "Save",
+    "taxCode": "Tax Code",
+    "title": "Customer Create"
+  }
+}

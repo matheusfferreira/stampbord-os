@@ -1,0 +1,10 @@
+{
+  "customerForm": {
+    "title": "Cadastrar Cliente",
+    "saveButton": "Salvar",
+    "name": "Nome",
+    "taxCode": "CNPJ/CPF",
+    "email": "Email",
+    "phone": "Telefone"
+  }
+}
