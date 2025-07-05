@@ -1,7 +1,8 @@
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next';
+import styles from './CustomerForm.module.css';
 
-import api from '../services/api'
+import api from '../../services/api'
 
 export default function CustomerForm() {
     const { t } = useTranslation();
@@ -22,7 +23,7 @@ export default function CustomerForm() {
         await api.post('/Customer', customerObj)
     }
     return (
-        <div className='container'>
+        <div className={`${styles['customer-form']}`}>
             <form>
                 <h1>{t('customerForm.title')}</h1>
                 <input placeholder={t('customerForm.name')} name='name' type='text' ref={inputName}></input>
