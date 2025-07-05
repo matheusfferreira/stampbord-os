@@ -12,7 +12,7 @@ export default function CustomerTable({ customers }) {
                         <th>{t('customer.name')}</th>
                         <th>{t('customer.email')}</th>
                         <th>{t('customer.phone')}</th>
-                        <th>{t('customer.actions')}</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

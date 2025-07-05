@@ -1,29 +1,38 @@
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './Customer.module.css';
+import { useState } from 'react';
+import Spinner from '../../components/Spinner/Spinner';
 
 import api from '../../services/api'
 
 export default function CustomerForm() {
-    const { t } = useTranslation()
+    const [loading, setLoading] = useState(false);
+    const { t } = useTranslation();
+    const navigate = useNavigate();
 
-    const inputName = useRef()
-    const inputTaxCode = useRef()
-    const inputEmail = useRef()
-    const inputPhone = useRef()
+    const inputName = useRef();
+    const inputTaxCode = useRef();
+    const inputEmail = useRef();
+    const inputPhone = useRef();
 
     async function createCustomer() {
+        setLoading(true);
         const customerObj = {
             name: inputName.current.value,
             taxCode: inputTaxCode.current.value,
             email: inputEmail.current.value,
             telefone: inputPhone.current.value
-        }
+        };
 
-        await api.post('/Customer', customerObj)
-    }
+        await api.post('/Customer', customerObj);
+        setLoading(false);
+        navigate('/clientes');
+    };
     return (
-        <div className={`${styles['customer-form']}`}>
+        <main className={`${styles['customer-form']}`}>
+            {loading && <Spinner />}
             <form>
                 <h1>{t('customer.formTitle')}</h1>
                 <input placeholder={t('customer.name')} name='name' type='text' ref={inputName}></input>
@@ -33,6 +42,6 @@ export default function CustomerForm() {
 
                 <button type='button' onClick={createCustomer}>{t('customer.saveButton')}</button>
             </form>
-        </div>
+        </main>
     )
 };
