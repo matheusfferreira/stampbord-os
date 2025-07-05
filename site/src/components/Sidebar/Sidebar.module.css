@@ -1,0 +1,31 @@
+.sidebar {
+  width: 200px;
+  background-color: #252424;
+  color: #fff;
+  padding: 20px;
+  height: 100%; /* altura dentro da área abaixo do header */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: #dad1c6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  opacity: 0.7;
+}
+
+.sidebar .active {
+  font-weight: bold;
+  color: #d94046;
+}

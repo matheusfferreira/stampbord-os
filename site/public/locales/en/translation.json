@@ -1,10 +1,17 @@
 {
-  "customerForm": {
+  "customer": {
+    "title": "Customer",
     "email": "Email",
     "name": "Name",
     "phone": "Phone Number",
     "saveButton": "Save",
     "taxCode": "Tax Code",
-    "title": "Customer Create"
+    "formTitle": "Customer Create"
+  },
+  "product": {
+    "title": "Product"
+  },
+  "order": {
+    "title": "Order"
   }
 }
