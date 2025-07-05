@@ -25,13 +25,13 @@ export default function CustomerForm() {
     return (
         <div className={`${styles['customer-form']}`}>
             <form>
-                <h1>{t('customerForm.title')}</h1>
-                <input placeholder={t('customerForm.name')} name='name' type='text' ref={inputName}></input>
-                <input placeholder={t('customerForm.taxCode')} name='taxCode' type='text' ref={inputTaxCode}></input>
-                <input placeholder={t('customerForm.email')} name='email' type='email' ref={inputEmail}></input>
-                <input placeholder={t('customerForm.phone')} name='phone' type='text' ref={inputPhone}></input>
+                <h1>{t('customer.formTitle')}</h1>
+                <input placeholder={t('customer.name')} name='name' type='text' ref={inputName}></input>
+                <input placeholder={t('customer.taxCode')} name='taxCode' type='text' ref={inputTaxCode}></input>
+                <input placeholder={t('customer.email')} name='email' type='email' ref={inputEmail}></input>
+                <input placeholder={t('customer.phone')} name='phone' type='text' ref={inputPhone}></input>
 
-                <button type='button' onClick={createCustomer}>{t('customerForm.saveButton')}</button>
+                <button type='button' onClick={createCustomer}>{t('customer.saveButton')}</button>
             </form>
         </div>
     )

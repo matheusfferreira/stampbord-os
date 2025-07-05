@@ -1,0 +1,10 @@
+.page {
+  display: flex;
+  height: calc(100vh - 70px); /* se o header tiver 70px de altura */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}

@@ -39,20 +39,3 @@ form {
   }
 }
 
-header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 30px;
-  background-color: #252424;
-  border-bottom: 1px solid #97938f;
-  height: 60px;
-  box-sizing: border-box;  
-  justify-content: space-between;
-}
-
-header img {
-  height: 100%; 
-  width: auto; 
-  max-height: 60px; 
-}
-

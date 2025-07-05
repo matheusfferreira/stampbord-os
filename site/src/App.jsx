@@ -1,20 +1,11 @@
 import './App.css'
 import './i18n'
-import CustomerForm from './components/CustomerForm/CustomerForm'
-import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher'
-
+import './routes/Router'
+import AppRouter from './routes/Router'
 
 function App() {
   return (
-    <>
-      <header>
-        <img src="/src/assets/stampbord2.svg" alt="Logo" />
-        <LanguageSwitcher />
-      </header>
-      <main>
-        <CustomerForm />
-      </main>
-    </>
+    <AppRouter />
   )
 }
 
