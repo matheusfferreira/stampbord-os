@@ -8,6 +8,8 @@ import Spinner from '../../components/Spinner/Spinner';
 
 export default function CustomerPage() {
     const [customers, setCustomers] = useState([]);
+    const [totalPages, setTotalPages] = useState(1);
+    const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
     const { t } = useTranslation();
 
@@ -16,8 +18,9 @@ export default function CustomerPage() {
     useEffect(() => {
         async function fetchCustomers() {
             try {
-                const response = await api.get('/Customer');
-                setCustomers(response.data);
+                const res = await api.get(`/Customer/paged?page=${page}&pageSize=10`);
+                setCustomers(res.data.data);
+                setTotalPages(res.data.pagination.totalPages);
             } catch (error) {
                 console.error('Erro ao buscar clientes:', error);
             } finally {
@@ -26,12 +29,15 @@ export default function CustomerPage() {
         }
 
         fetchCustomers();
-    }, []);
+    }, [page]);
     return (
         <main>
             {loading && <Spinner />}
-            <button onClick={() => navigate('novo')} type='button' className={`${styles.actionBtn} ${styles.editBtn}`}>{t('customer.formTitle')}</button>
-            <CustomerTable customers={customers} />
+            <div className='page-top'>
+                <h1>{t('customer.formTitle')}</h1>
+                <button onClick={() => navigate('novo')} type='button' className={`${styles.actionBtn} ${styles.editBtn}`}>{t('customer.formTitle')}</button>
+            </div>
+            <CustomerTable customers={customers} totalPages={totalPages} page={page} setPage={setPage} />
         </main>
     );
 }

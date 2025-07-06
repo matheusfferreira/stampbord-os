@@ -1,7 +1,8 @@
+import Pagination from '../../components/Pagination/Pagination';
 import styles from './Customer.module.css';
 import { useTranslation } from 'react-i18next';
 
-export default function CustomerTable({ customers }) {
+export default function CustomerTable({ customers, totalPages, page, setPage }) {
     const { t } = useTranslation();
 
     return (
@@ -28,6 +29,7 @@ export default function CustomerTable({ customers }) {
                     ))}
                 </tbody>
             </table>
+            <Pagination page={page} setPage={setPage} totalPages={totalPages} />
         </div>
     )
 }
