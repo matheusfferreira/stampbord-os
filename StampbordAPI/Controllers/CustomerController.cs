@@ -53,5 +53,34 @@ namespace StampbordAPI.Controllers
             return Ok(results);
         }
 
+        [HttpGet("paged")]
+        public async Task<ActionResult<List<CustomerModel>>> GetPaged([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        {
+            if (page <= 0 || pageSize <= 0)
+                return BadRequest("Page and pageSize must be greater than zero.");
+
+            var skip = (page - 1) * pageSize;
+
+            var customers = await _context.Customers
+                .Skip(skip)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var totalCount = await _context.Customers.CountAsync();
+
+            var result = new
+            {
+                data = customers,
+                pagination = new
+                {
+                    page,
+                    pageSize,
+                    totalPages = (int)Math.Ceiling((double)totalCount / pageSize),
+                    totalCount
+                }
+            };
+
+            return Ok(result);
+        }
     }
 }
