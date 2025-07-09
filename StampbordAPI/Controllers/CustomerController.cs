@@ -23,6 +23,13 @@ namespace StampbordAPI.Controllers
             return Ok(await _context.Customers.ToListAsync());
         }
 
+        //[HttpPut]
+        //public async Task<ActionResult<CustomerModel>> UpdateCustomer(CustomerModel customer`)
+        //{
+        //    _context.Customers.Update(customer);
+        //    await
+        //}
+
         [HttpGet]
         public async Task<ActionResult<List<CustomerModel>>> GetAll()
         {
@@ -35,38 +42,30 @@ namespace StampbordAPI.Controllers
             return Ok(await _context.Customers.FirstOrDefaultAsync(c => c.Id == id));
         }
 
-        [HttpGet("{query}")]
-        public async Task<ActionResult<CustomerModel>> GetByQuery(string query)
-        {
-            if (string.IsNullOrWhiteSpace(query))
-                return BadRequest("Query can't be NULL or Empty.");
-
-            var results = await _context.Customers
-                .Where(c =>
-                    c.Name.Contains(query) ||
-                    c.Email.Contains(query) ||
-                    c.TaxCode.Contains(query) ||
-                    c.Telefone.Contains(query) 
-                )
-                .ToListAsync();
-
-            return Ok(results);
-        }
-
         [HttpGet("paged")]
-        public async Task<ActionResult<List<CustomerModel>>> GetPaged([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        public async Task<ActionResult<List<CustomerModel>>> GetPaged([FromQuery] int page = 1, [FromQuery] int pageSize = 10, [FromQuery] string? search = null)
         {
             if (page <= 0 || pageSize <= 0)
                 return BadRequest("Page and pageSize must be greater than zero.");
 
-            var skip = (page - 1) * pageSize;
+            var customersQuery = _context.Customers.AsQueryable();
 
-            var customers = await _context.Customers
-                .Skip(skip)
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                string searchLower = search.ToLower();
+                customersQuery = customersQuery.Where(c =>
+                    c.Name.ToLower().Contains(searchLower) ||
+                    c.Email.ToLower().Contains(searchLower) ||
+                    c.Telefone.ToLower().Contains(searchLower));
+            }
+
+            var totalCount = await customersQuery.CountAsync();
+            
+            var customers = await customersQuery
+                .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
-            var totalCount = await _context.Customers.CountAsync();
 
             var result = new
             {
@@ -81,6 +80,22 @@ namespace StampbordAPI.Controllers
             };
 
             return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<CustomerModel>> UpdateCustomer(int id, [FromBody] CustomerModel customer)
+        {
+            var _customer = await _context.Customers.FindAsync(id);
+            if (_customer == null) return NotFound();
+
+            _customer.Name = customer.Name;
+            _customer.TaxCode = customer.TaxCode;
+            _customer.Email = customer.Email;
+            _customer.Telefone = customer.Telefone;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(_customer);
         }
     }
 }

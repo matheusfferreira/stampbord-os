@@ -75,7 +75,7 @@ export default function CustomerForm() {
                     <input name='phone' type='text' ref={inputPhone}></input>
                 </div>
 
-                <button type='button' onClick={handleSubmit}>{t('customer.saveButton')}</button>
+                <button type='button' onClick={handleSubmit}>{t('common.saveButton')}</button>
             </form>
         </main>
     )
