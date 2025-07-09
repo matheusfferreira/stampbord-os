@@ -8,14 +8,14 @@ form {
   flex-direction: column;
   gap: 30px;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #dad1c6;
   max-width: 50%;
   width: 400px;
   margin-bottom: 20px;
 
   & button {
-    border-radius: 30px;
+    border-radius: 5px;
     background-color: #97938f;
     height: 40px;
     border: none;
@@ -29,7 +29,7 @@ form {
 
   & input {
     border: 1px solid #252424;
-    border-radius: 30px;
+    border-radius: 3px;
     height: 40px;
     background-color: #f4ece4;
     color: #252424;

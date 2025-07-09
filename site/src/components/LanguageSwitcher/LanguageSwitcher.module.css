@@ -4,13 +4,13 @@
 }
 
 .translation-selector button {
-  border-radius: 30px;
+  border-radius: 5px;
   background-color: #97938f;      
   border: none;
   height: 36px;
   padding: 0 16px;
   font-weight: bold;
-  color: #dad1c6;
+  color: #252424;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }

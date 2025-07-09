@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './Pagination.module.css';
 
 export default function Pagination({ page, setPage, totalPages }) {

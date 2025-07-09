@@ -13,5 +13,8 @@
   },
   "order": {
     "title": "Pedido"
+  },
+  "common": {
+    "new": "Novo"
   }
 }

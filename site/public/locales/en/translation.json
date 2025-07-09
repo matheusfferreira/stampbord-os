@@ -13,5 +13,8 @@
   },
   "order": {
     "title": "Order"
+  },
+  "common": {
+    "new": "New"
   }
 }
