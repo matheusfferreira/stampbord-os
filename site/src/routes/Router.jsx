@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import CustomerForm from '../pages/Customers/CustomerForm';
 import Layout from './Layout';
 import { useTranslation } from 'react-i18next';
-import CustomerPage from '../pages/Customers/CustomerPage';
+import CustomerRoutes from '../pages/Customers/CustomerRoutes';
 
 export default function Router() {
     const { t } = useTranslation();
@@ -10,9 +9,8 @@ export default function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/clientes/" element={<Layout />}>
-                    <Route index element={<CustomerPage />} />
-                    <Route path="novo" element={<CustomerForm />} />
+                <Route path="/" element={<Layout />}>
+                    <Route path="clientes/*" element={<CustomerRoutes />} />
                 </Route>
             </Routes>
         </BrowserRouter>

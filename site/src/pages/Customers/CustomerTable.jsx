@@ -1,9 +1,11 @@
 import Pagination from '../../components/Pagination/Pagination';
 import styles from './Customer.module.css';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export default function CustomerTable({ customers, totalPages, page, setPage }) {
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     return (
         <div className={`${styles['table-container']}`}>
@@ -23,7 +25,8 @@ export default function CustomerTable({ customers, totalPages, page, setPage }) 
                             <td>{customer.email}</td>
                             <td>{customer.telefone}</td>
                             <td className={styles.actions}>
-                                <button className={`${styles.actionBtn} ${styles.editBtn}`}>Editar</button>
+                                <button className={`${styles.actionBtn} ${styles.editBtn}`}
+                                    onClick={() => navigate(`/clientes/editar/${customer.id}`)}>Editar</button>
                             </td>
                         </tr>
                     ))}

@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useRef, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './Customer.module.css';
 import { useState } from 'react';
@@ -8,6 +8,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import api from '../../services/api'
 
 export default function CustomerForm() {
+    const { id } = useParams();
     const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -17,7 +18,23 @@ export default function CustomerForm() {
     const inputEmail = useRef();
     const inputPhone = useRef();
 
-    async function createCustomer() {
+    useEffect(() => {
+        if (id) {
+            async function fetchCustomer() {
+                const res = await api.get(`/Customer/${id}`);
+                const data = res.data;
+
+                inputName.current.value = data.name;
+                inputTaxCode.current.value = data.taxCode;
+                inputEmail.current.value = data.email;
+                inputPhone.current.value = data.telefone;
+            }
+
+            fetchCustomer();
+        }
+    }, [id]);
+
+    async function handleSubmit() {
         setLoading(true);
         const customerObj = {
             name: inputName.current.value,
@@ -26,10 +43,16 @@ export default function CustomerForm() {
             telefone: inputPhone.current.value
         };
 
-        await api.post('/Customer', customerObj);
+        if (id) {
+            await api.put(`/Customer/${id}`, customerObj);
+        } else {
+            await api.post('/Customer', customerObj);
+        }
+
         setLoading(false);
         navigate('/clientes');
     };
+
     return (
         <main className={`${styles['customer-form']}`}>
             {loading && <Spinner />}
@@ -40,7 +63,7 @@ export default function CustomerForm() {
                 <input placeholder={t('customer.email')} name='email' type='email' ref={inputEmail}></input>
                 <input placeholder={t('customer.phone')} name='phone' type='text' ref={inputPhone}></input>
 
-                <button type='button' onClick={createCustomer}>{t('customer.saveButton')}</button>
+                <button type='button' onClick={handleSubmit}>{t('customer.saveButton')}</button>
             </form>
         </main>
     )
