@@ -6,7 +6,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   padding: 30px;
   border-radius: 5px;
   background-color: #dad1c6;
@@ -47,4 +47,17 @@ main {
 .page-top {
   display: flex;
   justify-content: space-between;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+label {
+  font-weight: 600;
+  color: #252424;
+  font-size: 14px;
 }

@@ -1,0 +1,92 @@
+.product-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-top: 25px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  color: #252424;
+  background-color: #dad1c6;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.product-table th,
+.product-table td {
+  padding: 7px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.product-table th {
+  background-color: #97938f;
+  font-weight: 600;
+  color: #252424;
+  font-size: 14px;
+  border-bottom: 1px solid #dad1c6;
+}
+
+.product-table td {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.product-table tr:hover {
+  background-color: #f4ece4;
+}
+
+/* Coluna de ações - alinhamento */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  padding-right: 8px;
+}
+
+.actionsHeader {
+  text-align: right;
+  padding-right: 8px;
+}
+
+.actionBtn {
+  border-radius: 5px;
+  height: 36px;
+  padding: 0 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.editBtn {
+  background-color: #97938f;
+  border: none;
+  color: #dad1c6;
+}
+
+.editBtn:hover {
+  opacity: 0.8;
+}
+
+.deleteBtn {
+  background-color: transparent;
+  border: 2px solid #d94046;
+  color: #d94046;
+}
+
+.deleteBtn:hover {
+  background-color: #d94046;
+  color: #fff;
+}
+

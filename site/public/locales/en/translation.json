@@ -4,17 +4,22 @@
     "email": "Email",
     "name": "Name",
     "phone": "Phone Number",
-    "saveButton": "Save",
     "taxCode": "Tax Code",
     "formTitle": "Customer Create"
   },
   "product": {
-    "title": "Product"
+    "title": "Products",
+    "formTitle": "Cadastrar Produto",
+    "description": "Description",
+    "price": "Unit Price",
+    "ncmsh": "NCM/SH",
+    "code": "Product Code"
   },
   "order": {
     "title": "Order"
   },
   "common": {
+    "saveButton": "Save",
     "new": "New",
     "page":"Page",
     "of": "of",

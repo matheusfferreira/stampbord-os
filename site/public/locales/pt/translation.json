@@ -2,19 +2,25 @@
   "customer": {
     "title": "Cliente",
     "formTitle": "Cadastrar Cliente",
-    "saveButton": "Salvar",
     "name": "Nome",
     "taxCode": "CNPJ/CPF",
     "email": "Email",
     "phone": "Telefone"
   },
   "product": {
-    "title": "Produto"
+    "title": "Produtos",
+    "formTitle": "Cadastrar Produto",
+    "description": "Descrição",
+    "price": "Preço Unit.",
+    "ncmsh": "NCM/SH",
+    "code": "Cód. Prod."
+    
   },
   "order": {
     "title": "Pedido"
   },
   "common": {
+    "saveButton": "Salvar",
     "new": "Novo",
     "page":"Pagina",
     "of": "de",
