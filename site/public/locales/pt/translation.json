@@ -15,6 +15,13 @@
     "title": "Pedido"
   },
   "common": {
-    "new": "Novo"
+    "new": "Novo",
+    "page":"Pagina",
+    "of": "de",
+    "previous": "Anterior",
+    "next": "Próxima",
+    "portuguese": "Português",
+    "english": "Inglês",
+    "search": "Buscar"
   }
 }

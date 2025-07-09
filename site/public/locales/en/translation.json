@@ -15,6 +15,13 @@
     "title": "Order"
   },
   "common": {
-    "new": "New"
+    "new": "New",
+    "page":"Page",
+    "of": "of",
+    "previous": "Previous",
+    "next": "Next",
+    "portuguese": "Portuguese",
+    "english": "English",
+    "search": "Search"
   }
 }

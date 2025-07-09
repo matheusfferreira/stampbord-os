@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './SearchBar.module.css';
+import { useTranslation } from 'react-i18next';
 
 export default function SearchBar({ onSearch }) {
     const [inputValue, setInputValue] = useState('');
     const [debouncedValue, setDebouncedValue] = useState('');
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -20,7 +23,7 @@ export default function SearchBar({ onSearch }) {
     return (
         <input
             type="text"
-            placeholder="Buscar..."
+            placeholder={t('common.search')}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             className={styles.input}

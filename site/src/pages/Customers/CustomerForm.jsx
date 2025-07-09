@@ -58,10 +58,22 @@ export default function CustomerForm() {
             {loading && <Spinner />}
             <form>
                 <h1>{t('customer.formTitle')}</h1>
-                <input placeholder={t('customer.name')} name='name' type='text' ref={inputName}></input>
-                <input placeholder={t('customer.taxCode')} name='taxCode' type='text' ref={inputTaxCode}></input>
-                <input placeholder={t('customer.email')} name='email' type='email' ref={inputEmail}></input>
-                <input placeholder={t('customer.phone')} name='phone' type='text' ref={inputPhone}></input>
+                <div className='form-group'>
+                    <label htmlFor="name">{t('customer.name')}</label>
+                    <input name='name' type='text' ref={inputName}></input>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor="taxCode">{t('customer.taxCode')}</label>
+                    <input name='taxCode' type='text' ref={inputTaxCode}></input>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor="email">{t('customer.email')}</label>
+                    <input name='email' type='email' ref={inputEmail}></input>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor="phone">{t('customer.phone')}</label>
+                    <input name='phone' type='text' ref={inputPhone}></input>
+                </div>
 
                 <button type='button' onClick={handleSubmit}>{t('customer.saveButton')}</button>
             </form>
